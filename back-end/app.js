@@ -13,16 +13,39 @@ app.use(express.static(path.join(__dirname,"../public")));
 app.set("view engine","hbs");
 app.set("views",viewsPath);
 hbs.registerPartials(partialsPath);
+
 app.get("",(req,res)=>{
     res.render("index",{
-        name :"HomePage"
+        description:"Login Page"
+    })
+})
+
+app.get("/homepage",(req,res)=>{
+    res.render("homepage",{
+        description :"HomePage",
+        name : req.query.name
+
     });
 })
 app.get("/technical",(req,res)=>{
     res.render("technical",{
-        description:"Technical Page"
+        description:"Technical Page",
+        message : req.query.message
     })
 })
+app.get("/cultural",(req,res)=>{
+    res.render("cultural",{
+        description:"Cultural Page",
+        message : req.query.message
+    })
+})
+app.get("/sports",(req,res)=>{
+    res.render("sports",{
+        description:"Sports Page",
+        message : req.query.message
+    })
+})
+
 app.listen(3000,()=>{
     console.log("Server is up on port 3000");
 })
