@@ -12,8 +12,8 @@ loginForm.addEventListener("submit",(event)=>{
 		body: JSON.stringify(data)
 	}).then((res)=>{
 		res.json().then((inf)=>{
-			console.log(inf.passwordd);
-			const query = "/homepage?name="+inf.namee;
+			console.log(inf.password);
+			const query = "/homepage?name="+inf.name;
 			location.href = query;
 		}).catch((error) =>{
 			console.log(error);
