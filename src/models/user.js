@@ -7,6 +7,26 @@ const User = mongoose.model("User",{
         required:true,
         trim:true
     },
+    lastName:{
+        type:String,
+        required:true,
+        trim:true
+    },
+    rollNo:{
+        type:String,
+        required:true,
+        trim:true
+    },
+    email:{
+        type:String,
+        required:true,
+        trim:true
+    },
+    mobileNo:{
+        type:String,
+        required:true,
+        trim:true
+    },
     password:{
         type:String,
         required:true,

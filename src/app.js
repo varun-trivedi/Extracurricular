@@ -16,7 +16,7 @@ app.set("view engine","hbs");
 app.set("views",viewsPath);
 hbs.registerPartials(partialsPath);
 
-app.post("/users",(req,res) =>{
+app.post("/addUsers",(req,res) =>{
     //console.log("here");
     const user = new User(req.body);
     user.save().then(()=>{
@@ -24,6 +24,19 @@ app.post("/users",(req,res) =>{
     }).catch((e) =>{
         res.status(400).send(e);
     })
+})
+app.get("/users/:name&:password",async (req,res)=>{
+    try{
+        const users = await User.find({name : req.params.name,password:req.params.password});
+        if(users.length == 0)
+            res.status(404).send();
+        else
+            res.status(201).send(users);
+            
+    }catch(e){
+        res.status(500).send(e);
+    }
+
 })
 app.get("",(req,res)=>{
     res.render("index",{
@@ -41,19 +54,47 @@ app.get("/homepage",(req,res)=>{
 app.get("/technical",(req,res)=>{
     res.render("technical",{
         description:"Technical Page",
-        message : req.query.message
     })
 })
 app.get("/cultural",(req,res)=>{
     res.render("cultural",{
         description:"Cultural Page",
-        message : req.query.message
     })
 })
 app.get("/sports",(req,res)=>{
     res.render("sports",{
         description:"Sports Page",
-        message : req.query.message
+    })
+})
+app.get("/addUser",(req,res)=>{
+    res.render("addUser",{
+        description:"Add new user here"
+    })
+})
+app.get("/admin_login",(req,res)=>{
+    res.render("admin_login",{
+        description:"Admin Login Page",
+    })
+})
+app.get("/admin_login/:password",async (req,res)=>{
+    try{
+         if(req.params.password == "varun123")
+             res.send({
+                message:"ok"
+             });
+         else
+             {
+                res.status(404).send();
+             }
+            
+    }catch(e){
+        res.status(500).send(e);
+    }
+
+})
+app.get("/admin_homepage",(req,res)=>{
+    res.render("admin_homepage",{
+        description:"Welcome Admin!",
     })
 })
 
