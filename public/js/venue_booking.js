@@ -4,6 +4,7 @@ addVenueForm.addEventListener("submit",(event)=>{
 	event.preventDefault();
 	const formData = new FormData(addVenueForm);
 	const data = Object.fromEntries(formData);
+
 	fetch("/bookvenue",{
 		method:"POST",
 		headers:{

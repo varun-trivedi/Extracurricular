@@ -27,6 +27,11 @@ const User = mongoose.model("User",{
         required:true,
         trim:true
     },
+    role:{
+        type:String,
+        required:true,
+        trim:true
+    },
     password:{
         type:String,
         required:true,

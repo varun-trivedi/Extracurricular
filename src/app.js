@@ -1,9 +1,12 @@
 const path = require("path");
+const nodemailer = require("nodemailer");
 const express = require("express");
 require("./db/mongoose");
 const User = require("./models/user");
 const VenueRequest = require("./models/venueRequests");
+const VenueBooking = require("./models/venueBookings");
 const hbs = require("hbs");
+const { getEventListeners } = require("events");
 const app = express();
 const port = process.env.PORT || 3000
 
@@ -38,10 +41,15 @@ app.get("",(req,res)=>{
     })
 })
 
-app.get("/homepage",(req,res)=>{
+app.get("/homepage/:name&:lastName&:rollNo&:email&:mobileNo&:role",(req,res)=>{
     res.render("homepage",{
         description :"HomePage",
-        name : req.query.name
+        name : req.params.name,
+        lastName:req.params.lastName,
+        rollNo:req.params.rollNo,
+        email:req.params.email,
+        role:req.params.role,
+        mobileNo:req.params.mobileNo
 
     });
 })
@@ -119,7 +127,73 @@ app.post("/bookvenue",(req,res) =>{
         res.status(400).send(e);
     })
 })
+//return all requests
+app.get("/bookvenue",async (req,res)=>{
+    try{
+        const users = await VenueRequest.find({approved: false});
+        if(users.length == 0)
+            res.status(404).send();
+        else
+            res.status(201).send(users);
+            
+    }catch(e){
+        res.status(500).send(e);
+    }
 
+})
+//rendering venue approval page when required
+app.get("/venue_approval",(req,res)=>{
+    res.render("venue_approval",{
+        description:"Approve Venue Applications"
+    })
+})
+
+app.get("/bookvenue/:_id&:email",async (req,res)=>{ 
+    try{
+        const count = await VenueRequest.deleteOne({ _id: req.params._id }); // returns {deletedCount: 1} 
+        if(count.deletedCount == 1)
+        {
+            const msg = {
+                from: "varuntrivedi180302@gmail.com",
+                to:req.params.email,
+                subject:"Venue Booked.",
+                text: "Your requested Venue has successfully been booked, Please check 'bookings' section for more details"
+            };
+            nodemailer.createTransport({
+                service:"gmail",
+                auth:{
+                    user:"varuntrivedi180302@gmail.com",
+                    pass:"wcrmqidixowlzdyu"
+                },
+                port:465,
+                host:'smtp.gmail.com'
+            })
+            .sendMail(msg,(err )=>{
+                if(err){
+                    console.log("error");
+                }
+                else{
+                    console.log("Email sent");
+                }
+            })
+            res.status(201).send(count);
+        }    
+        else
+            res.status(404).send();
+    }
+    catch(e){
+        res.status(500).send(e);
+    }
+})
+//saving venue booking
+app.post("/venue_approval",(req,res) =>{
+    const venuebooking = new VenueBooking(req.body);
+    venuebooking.save().then(()=>{
+        res.send(venuebooking);
+    }).catch((e) =>{
+        res.status(400).send(e);
+    })
+})
 //starting app
 
 app.listen(port,()=>{

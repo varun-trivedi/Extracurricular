@@ -1,7 +1,7 @@
 const mongoose = require("mongoose");
 const validator = require("validator");
 
-const VenueRequests = mongoose.model("VenueRequests",{
+const VenueBookings = mongoose.model("VenueBookings",{
     rollNo: {
         type:String,
         required:true,
@@ -25,10 +25,6 @@ const VenueRequests = mongoose.model("VenueRequests",{
         type:String,
         required:true,
         trim:true
-    },
-    approved:{
-        type:Boolean,
-        default:false
     }
 })
-module.exports = VenueRequests;
+module.exports = VenueBookings;

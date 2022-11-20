@@ -8,7 +8,7 @@ loginForm.addEventListener("submit",(event)=>{
 	fetch("/users/"+data.name+"&"+data.password).then((res) =>{
         res.json().then((result)=>{
             {
-				const query = "/homepage?name="+result[0].name;
+				const query = "/homepage/"+result[0].name+"&"+result[0].lastName+"&"+result[0].rollNo+"&"+result[0].email+"&"+result[0].mobileNo+"&"+result[0].role;
                 location.href = query;
         // for(let i=0;i<result.length;i++)
         // {
