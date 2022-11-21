@@ -1,18 +1,21 @@
 <!DOCTYPE html>
 <html>
     <head>
+        
     <title>Homepage</title>
     </head>
     <body>
         <h1>{{description}}</h1>
         <h2>Hello {{name}} {{lastName}}!</h2>
         <h2>{{rollNo}}</h2>
-        <h2>{{role}}</h2>
+        <h2 id = "rol">{{role}}</h2>
         <a href="/technical">Technical</a>
         <a href = "/sports">Sports</a>
         <a href = "/cultural">Cultural</a>
         <a href="/venue_booking">Book A Venue</a>
-
+        <a href="/club_request">Submit Club Application</a><br>
+        <a href="/club_approval/?role={{role}}"> Approve Club Application</a>
+        
     </body>
     
 </html>

@@ -5,6 +5,8 @@ require("./db/mongoose");
 const User = require("./models/user");
 const VenueRequest = require("./models/venueRequests");
 const VenueBooking = require("./models/venueBookings");
+const ClubApplication = require("./models/clubApplication");
+const ClubMembers = require("./models/clubMembers");
 const hbs = require("hbs");
 const { getEventListeners } = require("events");
 const app = express();
@@ -194,6 +196,105 @@ app.post("/venue_approval",(req,res) =>{
         res.status(400).send(e);
     })
 })
+//load club application page
+app.get("/club_request",(req,res)=>{
+    res.render("club_request",{
+        description:"Send Club Request"
+    })
+})
+//store application in database
+app.post("/club_request",(req,res) =>{
+    //console.log("here");
+    const clubrequest = new ClubApplication(req.body);
+    clubrequest.save().then(()=>{
+        res.send(clubrequest);
+    }).catch((e) =>{
+        res.status(400).send(e);
+    })
+})
+app.get("/club_request/:rollNo&:clubName",async (req,res)=>{
+    try{
+        const users = await ClubApplication.find({rollNo:req.params.rollNo,clubName:req.params.clubName});
+        if(users.length == 0)
+            res.status(404).send([]);
+        else
+            res.status(201).send(users);
+            
+    }catch(e){
+        res.status(500).send(e);
+    }
+    
+})
+//load club approval page
+app.get("/club_approval/",(req,res)=>{
+    res.render("club_approval",{
+        description:"Send Club Request",
+        role:req.query.role
+    })
+})
+//fetch pending applications for a particular club
+app.get("/approveClub/:clubname",async (req,res)=>{
+    try{
+        const applications = await ClubApplication.find({clubName : req.params.clubname});
+        if(applications.length == 0)
+            res.status(404).send();
+        else
+            res.status(201).send(applications);
+            
+    }catch(e){
+        res.status(500).send(e);
+    }
+
+})
+//adding to Club Members
+app.post("/approveClub",(req,res) =>{
+    const member = new ClubMembers(req.body);
+    member.save().then(()=>{
+        res.send(member);
+    }).catch((e) =>{
+        res.status(400).send(e);
+    })
+})
+//deleting application upon decision
+app.get("/approve_club/:_id&:email",async (req,res)=>{ 
+    try{
+        const count = await ClubApplication.deleteOne({ _id: req.params._id }); // returns {deletedCount: 1} 
+        if(count.deletedCount == 1)
+        {
+            const msg = {
+                from: "varuntrivedi180302@gmail.com",
+                to:req.params.email,
+                subject:"Club Application Accepted!",
+                text: "Your Club Application has been accepted!"
+            };
+            nodemailer.createTransport({
+                service:"gmail",
+                auth:{
+                    user:"varuntrivedi180302@gmail.com",
+                    pass:"wcrmqidixowlzdyu"
+                },
+                port:465,
+                host:'smtp.gmail.com'
+            })
+            .sendMail(msg,(err )=>{
+                if(err){
+                    console.log("error");
+                }
+                else{
+                    console.log("Email sent");
+                }
+            })
+            res.status(201).send(count);
+        }    
+        else
+            res.status(404).send();
+    }
+    catch(e){
+        res.status(500).send(e);
+    }
+})
+
+
 //starting app
 
 app.listen(port,()=>{

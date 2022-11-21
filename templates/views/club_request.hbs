@@ -1,0 +1,27 @@
+<!doctype html>
+<html lang="en">
+  <head>
+  	<title>LNMIIT Extra Curricular</title>
+	</head>
+	<body>
+		<h1>Club Application Form</h1>
+    <h1>{{description}}</h1>
+	<form class="clubReqForm">
+        <input type="text"  name="name" id="name-field"placeholder="First Name"><br><br><br>
+        <input type="text"  name="lastName" id="lastName-field"placeholder="Last Name"><br><br><br>
+        <input type="text"  name="rollNo" id="rollNo-field"placeholder="Roll Number"><br><br><br>
+        
+        <input type="text" list="clubs" name="clubName" placeholder="Club Names"><br><br><br>
+          <datalist id="clubs">
+                    <option value="Cybros">
+                    <option value="MediaCell">
+          </datalist>
+        <input type="text"  name="email" id="email-field"placeholder="Email"><br><br><br>
+        <button type="submit">Submit Request</button>
+        
+    </form>
+
+  <script src="js/club_request.js"></script>
+
+	</body>
+</html>
