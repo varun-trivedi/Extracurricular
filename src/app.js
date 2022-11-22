@@ -58,16 +58,20 @@ app.get("/homepage/:name&:lastName&:rollNo&:email&:mobileNo&:role",(req,res)=>{
 app.get("/technical",(req,res)=>{
     res.render("technical",{
         description:"Technical Page",
+        
+        
     })
 })
 app.get("/cultural",(req,res)=>{
     res.render("cultural",{
         description:"Cultural Page",
+        
     })
 })
 app.get("/sports",(req,res)=>{
     res.render("sports",{
         description:"Sports Page",
+        
     })
 })
 //showing the addUser page and adding the user to the database
@@ -292,6 +296,20 @@ app.get("/approve_club/:_id&:email",async (req,res)=>{
     catch(e){
         res.status(500).send(e);
     }
+})
+//
+app.get("/bookvenuecheck/:rollNo",async (req,res)=>{
+    try{
+        const users = await User.find({rollNo:req.params.rollNo});
+        if(users.length == 0)
+            res.status(404).send(users);
+        else
+            res.status(201).send(users);
+            
+    }catch(e){
+        res.status(500).send(e);
+    }
+
 })
 
 

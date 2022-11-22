@@ -26,6 +26,11 @@ const ClubApplication = mongoose.model("ClubApplication",{
         type:String,
         required:true,
         trim:true
+    },
+    reason:{
+        type:String,
+        required:true,
+        trim:true
     }
 })
 module.exports = ClubApplication;

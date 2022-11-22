@@ -8,7 +8,7 @@ document.addEventListener("DOMContentLoaded", function() {
         window.alert("Not a club coordinator");
         history.back(); 
     }
-    roleName = roleName.slice(19,25)
+    roleName = roleName.slice(19);
     fetch("/approveClub/"+roleName).then((res) =>{
         res.json().then((result)=>{
         for(let i=0;i<result.length;i++)

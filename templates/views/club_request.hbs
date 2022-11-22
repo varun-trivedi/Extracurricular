@@ -1,27 +1,65 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
   <head>
-  	<title>LNMIIT Extra Curricular</title>
-	</head>
-	<body>
-		<h1>Club Application Form</h1>
-    <h1>{{description}}</h1>
-	<form class="clubReqForm">
-        <input type="text"  name="name" id="name-field"placeholder="First Name"><br><br><br>
-        <input type="text"  name="lastName" id="lastName-field"placeholder="Last Name"><br><br><br>
-        <input type="text"  name="rollNo" id="rollNo-field"placeholder="Roll Number"><br><br><br>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Sign Up</title>
+    <link rel="stylesheet" href="css/clubrequest_style.css" />
+    <script src="js/club_request.js" defer></script>
+  </head>
+  <body>
+    <div class="content">
+      <div class="image-section">
         
-        <input type="text" list="clubs" name="clubName" placeholder="Club Names"><br><br><br>
-          <datalist id="clubs">
-                    <option value="Cybros">
-                    <option value="MediaCell">
-          </datalist>
-        <input type="text"  name="email" id="email-field"placeholder="Email"><br><br><br>
-        <button type="submit">Submit Request</button>
-        
-    </form>
-
-  <script src="js/club_request.js"></script>
-
-	</body>
+      </div>
+      <div class="text-section">
+        <P><strong>CLUB APPLICATION FORM</strong></P>
+        <form>
+          <div class="inputs-section">
+            <div class="inputs">
+              <div>
+                <div>
+                  <label for="first-name">FIRST NAME</label
+                  ><input type="text"  name="name" id="name-field"><br><br><br>
+                </div>
+                <div>
+                  <label for="last-name">LAST NAME</label
+                  ><input type="text"  name="lastName" id="lastName-field"><br><br><br>
+                </div>
+              </div>
+              <div>
+                <div>
+                  <label for="email">EMAIL</label
+                  ><input type="text"  name="email" id="email-field"><br><br><br>
+                </div>
+                <div>
+                  <label for="club-names">CLUB NAMES</label
+                  > <input type="text" list="clubs" name="clubName" ><br><br><br>
+                  <datalist id="clubs">
+                            <option value="Cybros">
+                            <option value="MediaCell">
+                  </datalist>
+                </div>
+              </div>
+              <div>
+                <div>
+                  <label for="roll-no">ROLL NUMBER</label
+                  ><input type="text"  name="rollNo" id="rollNo-field"><br><br><br>
+                </div>
+              </div>
+              <div>
+                <div>
+                    <p><label for="reason">REASON FOR APPLYING</label></p>
+                    <textarea id="reason" name="reason" rows="4" cols="50" maxlength="90"></textarea>
+                <br>
+                </div>
+              </div>
+            </div>
+          </div>
+          <button type="submit" id="create-account">Submit Application</button>
+        </form>
+      </div>
+    </div>
+  </body>
 </html>

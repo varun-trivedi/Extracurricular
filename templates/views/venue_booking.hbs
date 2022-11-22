@@ -1,21 +1,67 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
   <head>
-  	<title>LNMIIT Extra Curricular</title>
-	</head>
-	<body>
-		<h1>{{description}}</h1>
-	<form class="addUserForm">
-        <input type="text"  name="rollNo" id="rollNo-field"placeholder="Roll Number"><br><br><br>
-        <input type="text"  name="venue" id="venue-field"placeholder="Venue"><br><br><br>
-        <input type="date"  name="date" id="date-field"placeholder="Date"><br><br><br>
-        <input type="text"  name="slot" id="slot-field"placeholder="Slot"><br><br><br>
-        <input type="text"  name="email" id="email-field"placeholder="Email"><br><br><br>
-        <button type="submit">Submit Request</button>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Sign Up</title>
+    <link rel="stylesheet" href="css/venuebooking_style.css" />
+    <script src="js/club_request.js" defer></script>
+  </head>
+  <body>
+    <div class="content">
+      <div class="image-section">
         
-    </form>
-
-  <script src="js/venue_booking.js"></script>
-
-	</body>
+      </div>
+      <div class="text-section">
+        <P id="bg"><strong>VENUE BOOKING FORM</strong></P>
+        <form>
+          <div class="inputs-section">
+            <div class="inputs">
+              <div>
+                <div>
+                  <label for="roll-no">ROLL NUMBER</label
+                  > <input type="text"  name="rollNo" id="rollNo-field"><br><br><br>
+                </div>
+                <div>
+                  <label for="venue">VENUE</label
+                  ><input type="text"  name="venue" id="venue-field"><br><br><br>
+                </div>
+              </div>
+              <div>
+                <div>
+                  
+                  <label for="email">EMAIL</label
+                    ><input type="text"  name="email" id="email-field"><br><br><br>
+                </div>
+                <div>
+                  <label for="slot-list">SLOTS</label
+                  ><input type="text"  list="slots" name="slot"><br><br><br>
+                  <datalist id="slots">
+                            <option value="Morning">
+                            <option value="Afternoon">
+                            <option value="Evening">
+                  </datalist>
+                </div>
+              </div>
+              <div>
+                <div>
+                  <label for="date">DATE</label
+                    ><input type="date"  name="date" id="date-field"><br><br><br>
+                </div>
+              </div>
+              <div>
+                <div>
+                    <p><label for="reason">REASON FOR BOOKING</label></p>
+                    <textarea id="reason" name="reason" rows="4" cols="50" maxlength="90"></textarea>
+                <br>
+                </div>
+              </div>
+            </div>
+          </div>
+          <button type="submit" id="create-account">Submit Application</button>
+        </form>
+      </div>
+    </div>
+  </body>
 </html>
