@@ -24,7 +24,7 @@ clubRequestForm.addEventListener("submit",(event)=>{
 					// const query = "/admin_homepage";
 					console.log(inf);
 					if(inf.name == "ValidationError")
-					console.log("Error!");
+					window.alert(inf.message);
 					else{
 						alert("Request Submitted successfully");
 						// location.href = query;

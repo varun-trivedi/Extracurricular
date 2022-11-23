@@ -16,7 +16,7 @@ addUserForm.addEventListener("submit",(event)=>{
 			const query = "/admin_homepage";
 			console.log(inf);
 			if(inf.name == "ValidationError")
-			console.log("Error!");
+			window.alert(inf.message);
 			else{
 				alert("User added successfully");
 				location.href = query;

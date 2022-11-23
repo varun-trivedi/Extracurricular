@@ -1,4 +1,4 @@
-<!doctype html>
+{{!-- <!doctype html>
 <html lang="en">
   <head>
   	<title>LNMIIT Extra Curricular</title>
@@ -8,7 +8,62 @@
         <a href="/venue_approval">Approve Venue Booking Request</a><br><br>
         <a href="/bulletinApproval">Approve Bulettin Board Update</a><br><br><br><br>
         <a href="/addUser">Add new User</a><br><br><br><br>
-        <a href="">Appoint new GSEC/Coordinator</a>
+        <a href="/deleteBulletin">Delete Bulletin Board entry</a>
 		
 	</body>
-</html>
+</html> --}}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TOP Landing Page</title>
+    <link rel="stylesheet" href="css/admin_homepage.css">
+    <script src="https://kit.fontawesome.com/705c9cffd1.js" crossorigin="anonymous"></script>
+</head>
+<body>
+    <div class="header">
+        <div class="hlogo">
+            <strong>ADMIN CONTROL PANEL</strong>
+        </div>
+    </div>
+
+    
+
+    <div class="info">
+        <div class="rando"> SERVICES.</div>
+        <div class="imagestext">
+            <div class="sqTextLine1">
+                <a class="sqtext" href="/venue_approval">
+                    <div class="roundsqr">
+                        <i class="fa-solid fa-hotel fa-8x"></i>
+                    </div>
+                    <div class="kftext">Venue Booking Approval</div>
+                </a>
+
+                <a class="sqtext" href="/addUser">
+                    <div class="roundsqr">
+                        <i class="fa-solid fa-user fa-8x"></i>
+                    </div>
+                    <div class="kftext">Add a New User</div><br>
+                </a>
+
+            </div>
+            <div class="sqTextLine2">
+                <a class="sqtext" href="/bulletinApproval">
+                    <div class="roundsqr">
+                        <i class="fa-solid fa-list fa-8x"></i>
+                    </div>
+                    <div class="kftext">Add Bulletin Board Approval</div>
+                </a>
+
+                <a class="sqtext" href="/deleteBulletin">
+                    <div class="roundsqr">
+                        <i class="fa-solid fa-trash fa-8x"></i>
+                    </div>
+                    <div class="kftext">Delete Bulletin Board Content</div>
+                </a>
+            </div>
+        </div>
+    </div>

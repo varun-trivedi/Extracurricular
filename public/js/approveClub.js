@@ -45,6 +45,7 @@ document.addEventListener("DOMContentLoaded", function() {
             }).then((res)=>{
                 res.json().then((inf)=>{
                     console.log(inf);
+                    window.alert("Approved Successfully");
                 }).catch((error) =>{
                     console.log(error);
                 })

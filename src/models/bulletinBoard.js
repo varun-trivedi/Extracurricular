@@ -15,12 +15,22 @@ const BulletinBoard = mongoose.model("BulletinBoard",{
     rollNo:{
         type:String,
         required:true,
-        trim:true
+        trim:true,
+        validate(value){
+            if(value.length != 8)
+            throw new Error("Not a Valid Roll No.");
+
+        }
     },
     email:{
         type:String,
         required:true,
-        trim:true
+        trim:true,
+        validate(value){
+            if(validator.isEmail(value) === false)
+                throw new Error("Not a Valid E-Mail");
+
+        }
     },
     content:{
         type:String,

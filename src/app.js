@@ -416,6 +416,45 @@ app.post("/bulletinpost",(req,res) =>{
         res.status(400).send(e);
     })
 })
+//
+app.get("/bulletin_retreival",async (req,res)=>{
+    try{
+        const entries = await BulletinBoard.find({});
+        if(entries.length == 0)
+            {
+                res.status(404).send();
+            }
+        else
+            res.status(201).send(entries);
+            
+    }catch(e){
+        res.status(500).send(e);
+    }
+
+})
+//
+app.get("/bulletin_delete/:_id",async (req,res)=>{ 
+    try{
+        const count = await BulletinBoard.deleteOne({ _id: req.params._id }); // returns {deletedCount: 1} 
+        if(count.deletedCount == 1)
+        {
+            
+            res.status(201).send(count);
+        }    
+        else
+            res.status(404).send();
+    }
+    catch(e){
+        res.status(500).send(e);
+    }
+})
+//
+app.get("/deleteBulletin",(req,res)=>{
+    res.render("deleteBulletin",{
+        description:"Delete Bulletin Board Additions"
+    })
+})
+
 
 
 //starting app

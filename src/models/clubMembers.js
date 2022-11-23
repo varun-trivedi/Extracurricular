@@ -15,7 +15,12 @@ const ClubMembers = mongoose.model("ClubMembers",{
     rollNo:{
         type:String,
         required:true,
-        trim:true
+        trim:true,
+        validate(value){
+            if(value.length != 8)
+            throw new Error("Not a Valid Roll No.");
+
+        }
     },
     clubName:{
         type:String,
@@ -25,7 +30,12 @@ const ClubMembers = mongoose.model("ClubMembers",{
     email:{
         type:String,
         required:true,
-        trim:true
+        trim:true,
+        validate(value){
+            if(validator.isEmail(value) === false)
+                throw new Error("Not a Valid E-Mail");
+
+        }
     }
 })
 module.exports = ClubMembers;

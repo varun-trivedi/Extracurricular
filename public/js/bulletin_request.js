@@ -30,9 +30,11 @@ addVenueForm.addEventListener("submit",(event)=>{
 					console.log(inf.rollNo);
 					//const query = "/admin_homepage";
 					console.log(inf);
+					
+					if(inf.name == "ValidationError")
+					window.alert(inf.message);
+					else
 					window.alert("Application submitted successfully")
-					// if(inf.name == "ValidationError")
-					// console.log("Error!");
 					// else{
 					// 	alert("User added successfully");
 					// 	location.href = query;
