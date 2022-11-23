@@ -364,13 +364,13 @@
                      <form>
                         <div class="row">
                            <div class="col-sm-12">
-                              <input class="contactus" placeholder="Name" type="text" name="Name">
+                              <input class="contactus" placeholder="{{name}} {{lastName}}" type="text" name="Name">
                            </div>
                            <div class="col-sm-12">
-                              <input class="contactus" placeholder="Phone" type="text" name="Email">
+                              <input class="contactus" placeholder="{{mobileNo}}" type="text" name="Email">
                            </div>
                            <div class="col-sm-12">
-                              <input class="contactus" placeholder="Email" type="text" name="Email">
+                              <input class="contactus" placeholder="{{email}}" type="text" name="Email">
                            </div>
                            <div class="col-sm-12">
                               <textarea class="textarea" placeholder="Message" type="text" name="Message"></textarea>
@@ -433,9 +433,10 @@
                 <p>Welcome! {{name}} {{lastName}}!</p>
                 <p>{{rollNo}}</p>
                 <p id = "rol">{{role}}</p>
-                <a href="/venue_booking">Book A Venue</a>
-                <a href="/club_request">Submit Club Application</a><br>
-               <a href="/club_approval/?role={{role}}"> Approve Club Application</a>
+                <a href="/venue_booking/{{name}}&{{lastName}}&{{rollNo}}&{{email}}&{{mobileNo}}&{{role}}">Book A Venue</a>
+                <a href="/club_request/{{name}}&{{lastName}}&{{rollNo}}&{{email}}&{{mobileNo}}&{{role}}">Submit Club Application</a><br>
+               <a href="/club_approval/?role={{role}}"> Approve Club Application</a><br>
+               <a href="/bulletinRequest/{{name}}&{{lastName}}&{{rollNo}}&{{email}}&{{mobileNo}}&{{role}}">Bulletin Board Updation Request</a><br>
                
             </div>
          </div>

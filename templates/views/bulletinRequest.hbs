@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Sign Up</title>
     <link rel="stylesheet" href="/css/clubrequest_style.css" />
-    <script src="/js/club_request.js" defer></script>
+    <script src="/js/bulletin_request.js" defer></script>
   </head>
   <body>
     <div class="content">
@@ -14,7 +14,7 @@
         
       </div>
       <div class="text-section">
-        <P><strong>CLUB APPLICATION FORM</strong></P>
+        <P><strong>BULLETIN BOARD UPDATION FORM</strong></P>
         <form>
           <div class="inputs-section">
             <div class="inputs">
@@ -33,14 +33,7 @@
                   <label for="email">EMAIL</label
                   ><input type="text"  name="email" id="email-field" value="{{email}}" readonly><br><br><br>
                 </div>
-                <div>
-                  <label for="club-names">CLUB NAME</label
-                  > <input type="text" list="clubs" name="clubName" ><br><br><br>
-                  <datalist id="clubs">
-                            <option value="Cybros">
-                            <option value="MediaCell">
-                  </datalist>
-                </div>
+                
               </div>
               <div>
                 <div>
@@ -50,8 +43,8 @@
               </div>
               <div>
                 <div>
-                    <p><label for="reason">REASON FOR APPLYING</label></p>
-                    <textarea id="reason" name="reason" rows="4" cols="50" maxlength="90"></textarea>
+                    <p><label for="reason">CONTENT</label></p>
+                    <textarea id="content" name="content" rows="4" cols="50" maxlength="90"></textarea>
                 <br>
                 </div>
               </div>

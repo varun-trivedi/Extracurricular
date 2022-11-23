@@ -14,7 +14,7 @@ document.addEventListener("DOMContentLoaded", function() {
         for(let i=0;i<result.length;i++)
         {
             arr.push(result[i]);
-            document.getElementById("show_requests").innerHTML += "<h2>"+result[i].name+"<br>"+result[i].lastName+"<br>"+result[i].rollNo+"<br>"+result[i].email+"</h2><input name='approval' type='checkbox' id= '"+"check"+i+"'><label for='approval'> Check to approve </label><br></br>";
+            document.getElementById("show_requests").innerHTML += "<h2>"+result[i].name+" "+result[i].lastName+"<br>"+result[i].rollNo+"<br>"+result[i].email+"<br>"+result[i].reason+"</h2><input name='approval' type='checkbox' id= '"+"check"+i+"'><label for='approval'> Check to approve </label><br></br>";
         }
         //checking use of innerhtml
     }).catch((error)=>{

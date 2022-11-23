@@ -5,8 +5,8 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Sign Up</title>
-    <link rel="stylesheet" href="css/venuebooking_style.css" />
-    <script src="js/club_request.js" defer></script>
+    <link rel="stylesheet" href="/css/venuebooking_style.css" />
+    <script src="/js/venue_booking.js" defer></script>
   </head>
   <body>
     <div class="content">
@@ -21,7 +21,7 @@
               <div>
                 <div>
                   <label for="roll-no">ROLL NUMBER</label
-                  > <input type="text"  name="rollNo" id="rollNo-field"><br><br><br>
+                  > <input type="text"  name="rollNo" id="rollNo-field" value="{{rollNo}}" readonly><br><br><br>
                 </div>
                 <div>
                   <label for="venue">VENUE</label
@@ -32,7 +32,7 @@
                 <div>
                   
                   <label for="email">EMAIL</label
-                    ><input type="text"  name="email" id="email-field"><br><br><br>
+                    ><input type="text"  name="email" id="email-field" value="{{email}}" readonly><br><br><br>
                 </div>
                 <div>
                   <label for="slot-list">SLOTS</label

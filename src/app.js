@@ -7,6 +7,8 @@ const VenueRequest = require("./models/venueRequests");
 const VenueBooking = require("./models/venueBookings");
 const ClubApplication = require("./models/clubApplication");
 const ClubMembers = require("./models/clubMembers");
+const BulletinRequest = require("./models/bulletinRequest");
+const BulletinBoard = require("./models/bulletinBoard");
 const hbs = require("hbs");
 const { getEventListeners } = require("events");
 const app = express();
@@ -120,9 +122,15 @@ app.get("/admin_homepage",(req,res)=>{
 })
 
 //submitting a venue request
-app.get("/venue_booking",(req,res)=>{
+app.get("/venue_booking/:name&:lastName&:rollNo&:email&:mobileNo&:role",(req,res)=>{
     res.render("venue_booking",{
-        description:"Submit Venue Application Request"
+        description:"Submit Venue Application Request",
+        name : req.params.name,
+        lastName:req.params.lastName,
+        rollNo:req.params.rollNo,
+        email:req.params.email,
+        role:req.params.role,
+        mobileNo:req.params.mobileNo
     })
 })
 app.post("/bookvenue",(req,res) =>{
@@ -201,9 +209,15 @@ app.post("/venue_approval",(req,res) =>{
     })
 })
 //load club application page
-app.get("/club_request",(req,res)=>{
+app.get("/club_request/:name&:lastName&:rollNo&:email&:mobileNo&:role",(req,res)=>{
     res.render("club_request",{
-        description:"Send Club Request"
+        description:"Send Club Request",
+        name : req.params.name,
+        lastName:req.params.lastName,
+        rollNo:req.params.rollNo,
+        email:req.params.email,
+        role:req.params.role,
+        mobileNo:req.params.mobileNo
     })
 })
 //store application in database
@@ -310,6 +324,97 @@ app.get("/bookvenuecheck/:rollNo",async (req,res)=>{
         res.status(500).send(e);
     }
 
+})
+//
+app.get("/bulletinRequest/:name&:lastName&:rollNo&:email&:mobileNo&:role",(req,res)=>{
+    res.render("bulletinRequest",{
+        description :"bulletinRequest",
+        name : req.params.name,
+        lastName:req.params.lastName,
+        rollNo:req.params.rollNo,
+        email:req.params.email,
+        role:req.params.role,
+        mobileNo:req.params.mobileNo
+
+    });
+})
+//
+app.post("/bulletin_request",(req,res) =>{
+    //console.log("here");
+    const bulletinRequest = new BulletinRequest(req.body);
+    bulletinRequest.save().then(()=>{
+        res.send(bulletinRequest);
+    }).catch((e) =>{
+        res.status(400).send(e);
+    })
+})
+//
+app.get("/bulletinApproval",(req,res)=>{
+    res.render("bulletinApproval",{
+        description:"Approve Bulletin Board Additions"
+    })
+})
+//
+app.get("/approvebulletin",async (req,res)=>{
+    try{
+        const users = await BulletinRequest.find({});
+        if(users.length == 0)
+            res.status(404).send();
+        else
+            res.status(201).send(users);
+            
+    }catch(e){
+        res.status(500).send(e);
+    }
+
+})
+//
+app.get("/approvebulletin/:_id&:email",async (req,res)=>{ 
+    try{
+        const count = await BulletinRequest.deleteOne({ _id: req.params._id }); // returns {deletedCount: 1} 
+        if(count.deletedCount == 1)
+        {
+            const msg = {
+                from: "varuntrivedi180302@gmail.com",
+                to:req.params.email,
+                subject:"Bulletin Board Update Approved!",
+                text: "Your Bulletin Board Update Application is Approved!!"
+            };
+            nodemailer.createTransport({
+                service:"gmail",
+                auth:{
+                    user:"varuntrivedi180302@gmail.com",
+                    pass:"wcrmqidixowlzdyu"
+                },
+                port:465,
+                host:'smtp.gmail.com'
+            })
+            .sendMail(msg,(err )=>{
+                if(err){
+                    console.log("error");
+                }
+                else{
+                    console.log("Email sent");
+                }
+            })
+            res.status(201).send(count);
+        }    
+        else
+            res.status(404).send();
+    }
+    catch(e){
+        res.status(500).send(e);
+    }
+})
+//
+app.post("/bulletinpost",(req,res) =>{
+    //console.log("here");
+    const bulletinBoard = new BulletinBoard(req.body);
+    bulletinBoard.save().then(()=>{
+        res.send(bulletinBoard);
+    }).catch((e) =>{
+        res.status(400).send(e);
+    })
 })
 
 
