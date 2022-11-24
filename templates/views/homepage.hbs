@@ -60,7 +60,10 @@
                               <li> <a href="#screenshot">Screenshot</a> </li>
                               <li> <a href="#contact">Contact us</a> </li>
                               <li> <a href="/">Logout</a> </li>
-                              <li><a href="" style="color: Black;">{{name}}</a></li>
+                              <br><br>
+                              <p style="line-height: 20px; font-size: 17px; display: block; font-weight: 500; color: #000; text-align: right">Welcome! {{name}} {{lastName}}</p><br>
+                              <p style="line-height: 20px; font-size: 17px; display: block; font-weight: 500; color: #000; text-align: right">{{rollNo}}</p><br>
+                              <p style="line-height: 20px; font-size: 17px; display: block; font-weight: 500; color: #000; text-align: right" id = "rol" >{{role}}</p>
                            </ul>
                         </nav>
                      </div>
@@ -166,9 +169,6 @@
                   </center>
                </marquee>
             </div>
-            <div class="is-left col-md-12" style="text-align:center;">
-               <a href="../calendar/calendar/calander.html" class="btn secondary view-more"><br><br><h2><b>Events Calender</b></h2></a>
-            </div>
          </div>
       </div>
 
@@ -259,7 +259,7 @@
                         <img  src="../images/images_homepage/1.jpg" class="zoom img-fluid "  alt="">
                         </a>
                         <span class="hoverle">
-                        <a href="../images/images_homepage/1.jpg" class="fancybox" rel="ligthbox">Food</a>
+                        <a href="/venue_booking/{{name}}&{{lastName}}&{{rollNo}}&{{email}}&{{mobileNo}}&{{role}}" class="fancybox" rel="ligthbox">Book a Venue</a>
                         </span>  
                      </figure>
                   </div>
@@ -271,7 +271,7 @@
                         <img  src="../images/images_homepage/2.jpg" class="zoom img-fluid "  alt="">
                         </a>
                         <span class="hoverle">
-                        <a href="../images/images_homepage/1.jpg" class="fancybox" rel="ligthbox">Fashion</a>
+                        <a href="/club_request/{{name}}&{{lastName}}&{{rollNo}}&{{email}}&{{mobileNo}}&{{role}}" class="fancybox" rel="ligthbox">Submit Club Application</a>
                         </span>
                      </figure>
                   </div>
@@ -283,7 +283,7 @@
                         <img  src="../images/images_homepage/3.jpg" class="zoom img-fluid "  alt="">
                         </a>
                         <span class="hoverle">
-                        <a href="../images/images_homepage/3.jpg" class="fancybox" rel="ligthbox">Booking</a>
+                        <a href="/club_approval" class="fancybox" rel="ligthbox">Approve club<br>Application</a>
                         </span>
                      </figure>
                   </div>
@@ -295,7 +295,7 @@
                         <img  src="../images/images_homepage/4.jpg" class="zoom img-fluid "  alt="">
                         </a>
                         <span class="hoverle">
-                        <a href="../images/images_homepage/4.jpg" class="fancybox" rel="ligthbox">Marketing</a>
+                        <a href="/bulletinRequest/{{name}}&{{lastName}}&{{rollNo}}&{{email}}&{{mobileNo}}&{{role}}" class="fancybox" rel="ligthbox">Bulletin Board Updation Request</a>
                         </span> 
                      </figure>
                   </div>
@@ -418,19 +418,19 @@
                      <form>
                         <div class="row">
                            <div class="col-sm-12">
-                              <input class="contactus" placeholder="{{name}} {{lastName}}" type="text" name="Name">
+                              <input class="contactus" value="{{name}} {{lastName}}" type="text" name="fullName">
                            </div>
                            <div class="col-sm-12">
-                              <input class="contactus" placeholder="{{mobileNo}}" type="text" name="Email">
+                              <input class="contactus" value="{{rollNo}}" type="text" name="rollNo">
                            </div>
                            <div class="col-sm-12">
-                              <input class="contactus" placeholder="{{email}}" type="text" name="Email">
+                              <input class="contactus" value="{{email}}" type="text" name="email">
                            </div>
                            <div class="col-sm-12">
-                              <textarea class="textarea" placeholder="Message" type="text" name="Message"></textarea>
+                              <textarea class="textarea" value="Message" type="text" name="message"></textarea>
                            </div>
                            <div class="col-sm-12">
-                              <button class="send">Send</button>
+                              <button type="submit" class="send">Send</button>
                            </div>
                         </div>
                      </form>
@@ -484,14 +484,7 @@
                </div>
             </div>
             <div class="copyright">
-                <p>Welcome! {{name}} {{lastName}}!</p>
-                <p>{{rollNo}}</p>
-                <p id = "rol">{{role}}</p>
-                <a href="/venue_booking/{{name}}&{{lastName}}&{{rollNo}}&{{email}}&{{mobileNo}}&{{role}}">Book A Venue</a>
-                <a href="/club_request/{{name}}&{{lastName}}&{{rollNo}}&{{email}}&{{mobileNo}}&{{role}}">Submit Club Application</a><br>
-               <a href="/club_approval/?role={{role}}"> Approve Club Application</a><br>
-               <a href="/bulletinRequest/{{name}}&{{lastName}}&{{rollNo}}&{{email}}&{{mobileNo}}&{{role}}">Bulletin Board Updation Request</a><br>
-               
+                
             </div>
          </div>
       </footer>

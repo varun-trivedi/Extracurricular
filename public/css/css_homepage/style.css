@@ -1075,13 +1075,13 @@ nav.main-menu {
 	border-bottom: solid #eee 1px;
 }
 
-.main-menu ul>li .sub-down li a::before {}
+/* .main-menu ul>li .sub-down li a::before {} */
 
 .main-menu ul>li .sub-down li a:hover {
 	color: #111111;
 }
 
-.main-menu ul>li .sub-down li a:hover::before {}
+/* .main-menu ul>li .sub-down li a:hover::before {} */
 
 .main-menu ul li:first-child {
 	margin-left: 0;
@@ -1144,7 +1144,7 @@ nav.main-menu {
 	vertical-align: middle;
 }
 
-.main-menu ul>li:nth-child (6) {
+.main-menu ul>li:nth-child {
 	padding-right: 0px;
 }
 
@@ -1163,7 +1163,7 @@ nav.main-menu {
 	padding: 15px 0px;
 }
 
-.sub-full {}
+/* .sub-full {} */
 
 .simple-down {
 	padding: 15px;
@@ -1454,7 +1454,7 @@ margin-bottom: -35px;
 z-index: 999;
 
 }
-}
+
 
 
 /** download section **/
@@ -1471,7 +1471,7 @@ z-index: 999;
 }
 
 .Screenshot .titlepage span {
-	color: # 3d3c3c
+	color: #3d3c3c
 }
 
 .Screenshot .titlepage h2 {
@@ -1577,7 +1577,7 @@ margin-bottom: 20px;
 }
 
 .service .titlepage span {
-	color: # 3d3c3c
+	color: #3d3c3c
 }
 
 .service .service-box figure {
